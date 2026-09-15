@@ -9,6 +9,7 @@ export class Player {
   purchaseCount: number;
   isBankrupt: boolean;
   inJail: boolean;
+  TakeOverCount: number;
 
   constructor(id: number, name: string) {
     this.id = id;
@@ -19,6 +20,7 @@ export class Player {
     this.purchaseCount = 0;
     this.isBankrupt = false;
     this.inJail = false;
+    this.TakeOverCount = 0
   }
 
   move(steps: number): void {

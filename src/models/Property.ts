@@ -1,4 +1,4 @@
-import type { Player } from "../Player";
+import type { Player } from "../models/Player";
 import type { PropertyTier } from "../types";
 
 export class Property {
