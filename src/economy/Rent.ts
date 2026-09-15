@@ -1,7 +1,8 @@
+import { Property } from "../Property";
 export class Rent {
     public amount:number;
    
-    constructor(amount:number){
-        this.amount = amount;
+    constructor(property:Property){
+       this.amount = property.getRent();
     }
 }
