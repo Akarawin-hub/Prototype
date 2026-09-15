@@ -4,9 +4,15 @@ export class Money {
         this.amount = amount;
     }
     public add(amount:number): void{
+        if (amount <= 0){
+            throw new Error("Must be positive number");
+        }
         this.amount += amount;
     }
     public subtract(amount:number):boolean {
+        if (amount <= 0){
+            throw new Error("Must be positive number");
+        }
        if (this.amount >= amount){
             this.amount -= amount;
             return true;
