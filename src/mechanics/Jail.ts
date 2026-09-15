@@ -1,16 +1,15 @@
+import { Player } from "../models/Player";
+
 export class Jail {
-    public Position = 12
-
-
     onTheTile(player:Player){
-        if (Player = this.Position) {
+        if (player.position == 12) {
             player.inJail = true
         }
     }
     bribe(player: Player): boolean{
         if (player.money <= 500) {
-            player.removeMoney(500)
-            inJail = false
+            player.pay(500)
+            player.inJail = false
             return true
         } else {
             return false
@@ -18,6 +17,6 @@ export class Jail {
     }
     skip(player: Player): void{
         player.inJail = false
-        game.log (`${player.name} is in jail skip 1 turn`)
+//        (`${player.getName} is in jail skip 1 turn`)
     }
 }
