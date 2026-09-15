@@ -9,12 +9,16 @@ export class SellProperty{
     public calculateSellValue(price:number):number{
         return price * 0.20;
     }
-    public confrimSell(player:Player , property:Property):void{
+    public confrimSell(player:Player , property:Property):boolean{
+        if (property.getOwner() !== player){
+            return false;
+        }
         player.receive(this.calculateSellValue(property.getPrice()))
         
         player.removeProperty(property);
         property.setOwner(null);
 
         property.clearRentPool();
+        return true;
     }
 }
