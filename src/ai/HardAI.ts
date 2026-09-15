@@ -9,7 +9,7 @@ export class HardAI extends AIPlayer {
     const moneyBefore = this.money
     const moneyAfter = moneyBefore - property.getPrice()
 
-    return moneyAfter >= moneyBefore * 0.50
+    return moneyAfter >= 0
     }
     decideTakeOver(property: Property): boolean {
     const cost = property.getPrice() * 1.65

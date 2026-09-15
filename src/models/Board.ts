@@ -1,12 +1,13 @@
-import { Property } from "./Property";
-import type { PropertyTier, TileType } from "./types";
+
 import { Tile } from "./Tile";
 import type { Player } from "./Player";
+import { Property } from "./Property";
+import { TileType } from "../types";
 
 interface PropertySetting {
   name: string;
   position: number;
-  tier: PropertyTier;
+  tier: "T1" | "T2" | "T3" | "T4" | "T5" | "T6";
   price: number;
   rent: number;
 }
@@ -67,8 +68,6 @@ export class Board {
           setting.name,
           setting.position,
           setting.tier,
-          setting.price,
-          setting.rent,
         ),
       );
     }

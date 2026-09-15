@@ -1,4 +1,5 @@
-import { Player } from "../Player";
+
+import { Player } from "../models/Player";
 import { Property } from "../Property";
 
 export class AIPlayer extends Player {

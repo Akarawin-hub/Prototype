@@ -6,9 +6,10 @@ export class NormalAI extends AIPlayer {
         super(id, name)
     }
     decidePurchase(property: Property): boolean {
+    const moneyBefore = this.money
     const moneyAfter = this.money - property.getPrice()
 
-    return moneyAfter >= 0
+    return moneyAfter >= moneyBefore * 0.30
     }
     decideTakeOver(property: Property): boolean {
     const cost = property.getPrice() * 1.65
