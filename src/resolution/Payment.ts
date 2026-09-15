@@ -1,5 +1,5 @@
 import { Player } from "../Player";
-import type { Property } from "../Property";
+import type { Property } from "../models/Property";
 import { Bankruptcy } from "./Bankruptcy";
 
 interface SellDecider {

@@ -1,4 +1,4 @@
-import { Property } from "./Property";
+import { Property } from "./models/Property";
 import type { PropertyTier, TileType } from "./types";
 import { Tile } from "./Tile";
 import type { Player } from "./Player";

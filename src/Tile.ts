@@ -1,4 +1,4 @@
-import type { Property } from "./Property";
+import type { Property } from "./models/Property";
 import type { TileType } from "./types";
 
 export class Tile {

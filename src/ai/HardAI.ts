@@ -1,4 +1,4 @@
-import { Property } from "../Property"
+import { Property } from "../models/Property"
 import { AIPlayer } from "./AIPlayer"
 
 export class HardAI extends AIPlayer {
@@ -9,7 +9,7 @@ export class HardAI extends AIPlayer {
     const moneyBefore = this.money
     const moneyAfter = moneyBefore - property.getPrice()
 
-    return moneyAfter >= 0
+    return moneyAfter >= moneyBefore * 0.50
     }
     decideTakeOver(property: Property): boolean {
     const cost = property.getPrice() * 1.65

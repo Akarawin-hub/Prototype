@@ -1,6 +1,5 @@
-
-import { Player } from "../models/Player";
-import { Property } from "../Property";
+import { Player } from "../Player";
+import { Property } from "../models/Property";
 
 export class AIPlayer extends Player {
     constructor(id: number, name: string) {

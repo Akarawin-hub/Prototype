@@ -1,88 +1,88 @@
-import { Property } from "../Property"
+import type { Property } from "./Property";
 
 export class Player {
+  id: number;
+  name: string;
+  money: number;
+  position: number;
+  properties: Property[];
+  purchaseCount: number;
+  isBankrupt: boolean;
+  inJail: boolean;
 
-    id: number
-    name: string
-    money: number
-    position: number
-    properties: Property[]
-    purchaseCount: number
-    isBankrupt: boolean
-    inJail: boolean
-    TakeOverCount: number
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
+    this.money = 1000;
+    this.position = 1;
+    this.properties = [];
+    this.purchaseCount = 0;
+    this.isBankrupt = false;
+    this.inJail = false;
+  }
 
-    constructor(id: number, name: string) {
-        this.id = id
-        this.name = name
-        this.money = 1000
-        this.position = 1
-        this.properties = []
-        this.purchaseCount = 0
-        this.isBankrupt = false
-        this.inJail = false
-        this.TakeOverCount = 0
+  move(steps: number): void {
+    this.position += steps;
+  }
+
+  pay(amount: number): boolean {
+    if (this.money >= amount) {
+      this.money -= amount;
+      return true;
     }
 
-    move(steps: number): void {
-        this.position += steps
+    return false;
+  }
+
+  receive(amount: number): void {
+    this.money += amount;
+  }
+
+  buyProperty(property: Property): boolean {
+    if (
+      this.money < property.getPrice() ||
+      property.getOwner() !== null ||
+      this.properties.length >= 5 ||
+      this.purchaseCount >= 7
+    ) {
+      return false;
     }
 
-    pay(amount: number): boolean {
-        if (this.money >= amount) {
-            this.money -= amount
-            return true
-        }
+    this.money -= property.getPrice();
+    this.properties.push(property);
+    this.purchaseCount += 1;
 
-        return false
+    return true;
+  }
+
+  sellProperty(property: Property): boolean {
+    if (property.getOwner() !== this) {
+      return false;
     }
 
-    receive(amount: number): void {
-        this.money += amount
+    this.receive(property.getPrice() * 0.2);
+
+    const index = this.properties.indexOf(property);
+
+    if (index !== -1) {
+      this.properties.splice(index, 1);
     }
 
-    buyProperty(property: Property): boolean {
-        if (
-            this.money < property.getPrice() ||
-            property.getOwner() !== null ||
-            this.properties.length >= 5 ||
-            this.purchaseCount >= 7
-        ) {
-            return false
-        }
+    property.setOwner(null);
+    property.clearRentPool();
 
-        this.money -= property.getPrice()
-        this.properties.push(property)
-        this.purchaseCount++
-        property.setOwner(this)
+    return true;
+  }
 
-        return true
+  addProperty(property: Property): void {
+    this.properties.push(property);
+  }
+
+  removeProperty(property: Property): void {
+    const index = this.properties.indexOf(property);
+
+    if (index !== -1) {
+      this.properties.splice(index, 1);
     }
-
-    sellProperty(property: Property): boolean {
-        if (property.getOwner() !== this) {
-            return false
-        }
-
-        const sellPrice = property.getPrice() * 0.2
-
-        this.money += sellPrice
-        this.removeProperty(property)
-        property.setOwner(null)
-        property.clearRentPool()
-
-        return true
-    }
-
-    addProperty(property: Property): void {
-        this.properties.push(property)
-    }
-
-    removeProperty(property: Property): void {
-        const index = this.properties.indexOf(property)
-
-        if (index !== -1) {
-            this.properties.splice(index, 1)
-        }
-    }
+  }
 }

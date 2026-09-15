@@ -1,5 +1,5 @@
 export { Player } from "./Player";
-export { Property } from "./Property";
+export { Property } from "./models/Property";
 export { Tile } from "./Tile";
 export { Board } from "./Board";
 export { Dice } from "./Dice";

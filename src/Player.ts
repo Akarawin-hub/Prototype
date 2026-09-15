@@ -1,4 +1,4 @@
-import { Property } from "./Property";
+import { Property } from "./models/Property";
 
 const BOARD_SIZE = 32;
 const MAX_PROPERTIES_HELD = 5;
